@@ -1,11 +1,5 @@
 .container {
   width: 100%;
   margin-inline: auto;
-  min-width: 320px;
   padding-inline: 15px;
-
-  @media screen and (width > 768px) {
-    max-width: 1280px;
-    padding-inline: 30px;
-  }
 }
