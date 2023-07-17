@@ -23,10 +23,15 @@ async function handleLoadMore() {
   await loadData({ isFirstPage: false });
 }
 
-async function loadData({ isFirstPage: isFirstPage = false }) {
+async function loadData({ isFirstPage = false }) {
   refs.loadMoreBtn.hide();
 
   try {
+    if (pixabayApiService.hasExceededMaxPage()) {
+      throw new Error(
+        "We're sorry, but you've reached the end of search results.");
+    }
+
     const {
       totalHits,
       hits,
@@ -51,11 +56,6 @@ async function loadData({ isFirstPage: isFirstPage = false }) {
     });
 
     pixabayApiService.incrementPage();
-
-    if (pixabayApiService.hasExceededMaxPage()) {
-      throw new Error(
-        "We're sorry, but you've reached the end of search results.");
-    }
 
     refs.loadMoreBtn.show();
   } catch (error) {
