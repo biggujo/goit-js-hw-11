@@ -1,3 +1,5 @@
+import { Notify } from "notiflix";
+
 import { refs } from "./js/refs";
 import { PixabayApiService } from "./js/pixabay-api-service";
 import CardService from "./js/card-service";
@@ -14,14 +16,14 @@ async function handleFormSubmit(event) {
   pixabayApiService.resetPageCount();
 
   pixabayApiService.query = event.currentTarget.elements.searchQuery.value;
-  await loadData();
+  await loadData({ isFirstPage: true });
 }
 
 async function handleLoadMore() {
-  await loadData();
+  await loadData({ isFirstPage: false });
 }
 
-async function loadData() {
+async function loadData({ isFirstPage: isFirstPage = false }) {
   refs.loadMoreBtn.hide();
 
   try {
@@ -33,6 +35,10 @@ async function loadData() {
     if (totalHits === 0) {
       throw new Error(
         "Sorry, there are no images matching your search query. Please try again.");
+    }
+
+    if (isFirstPage) {
+      Notify.success(`Hooray! We found ${totalHits} images.`);
     }
 
     setMaxPage(totalHits);
@@ -47,14 +53,13 @@ async function loadData() {
     pixabayApiService.incrementPage();
 
     if (pixabayApiService.hasExceededMaxPage()) {
-      // TODO: Add Notiflix
-      console.log("");
-      return;
+      throw new Error(
+        "We're sorry, but you've reached the end of search results.");
     }
 
     refs.loadMoreBtn.show();
   } catch (error) {
-    console.log(error.message); // TODO: Do not remove
+    Notify.failure(error.message);
   }
 }
 
