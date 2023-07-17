@@ -32,8 +32,6 @@ export class PixabayApiService {
       params,
     });
 
-    console.log(response);
-
     return response.data;
   }
 

@@ -63,11 +63,6 @@ async function loadData() {
 
     CardService.renderCardsMarkup(CardService.createCardsMarkup(hits));
 
-    console.log({
-      totalHits,
-      hits,
-    });
-
     simpleLightBox.refresh();
 
     pixabayApiService.incrementPage();
