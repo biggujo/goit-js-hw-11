@@ -10,23 +10,28 @@
   // https://getcssscan.com/css-box-shadow-examples
   box-shadow: rgba(27, 31, 35, 0.25) 0px 1px 0px, rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
 
-  & > img {
+  & img {
     width: 100%;
     height: 200px;
     object-fit: cover;
   }
 
-  & > .info {
+  & .info {
     display: flex;
     justify-content: space-between;
     padding: 15px;
 
-    & > .info-item {
+    & .info-item {
       display: flex;
       align-items: center;
       flex-direction: column;
       gap: 5px;
       margin: 0;
     }
+  }
+
+  & a {
+    color: inherit;
+    text-decoration: none;
   }
 }

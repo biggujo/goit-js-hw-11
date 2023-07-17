@@ -1,12 +1,20 @@
 import { Notify } from "notiflix";
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
 
 import { refs } from "./js/refs";
 import { PixabayApiService } from "./js/pixabay-api-service";
 import CardService from "./js/card-service";
+import simpleLightbox from "simplelightbox/dist/simple-lightbox";
 
 let isFirstPage = true;
 
 const pixabayApiService = new PixabayApiService();
+
+const simpleLightBox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
 
 refs.form.addEventListener("submit", handleFormSubmit);
 refs.loadMoreBtn.buttonRef.addEventListener("click", handleLoadMore);
@@ -59,6 +67,8 @@ async function loadData() {
       totalHits,
       hits,
     });
+
+    simpleLightBox.refresh();
 
     pixabayApiService.incrementPage();
 
