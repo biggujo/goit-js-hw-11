@@ -1,0 +1,12 @@
+.cat-gallery {
+  display: flex;
+  flex-wrap: wrap;
+
+  .cat-gallery > .card {
+    width: 100%;
+
+    @media screen and (width > 768px) {
+      width: calc((100% - 30px * 3) / 4);
+    }
+  }
+}
