@@ -5,7 +5,7 @@ $default-gap: 20px;
   flex-wrap: wrap;
   gap: $default-gap;
 
-  & > .card {
+  & > .photo-card {
     width: 100%;
 
     @media screen and (width >= 768px) {
