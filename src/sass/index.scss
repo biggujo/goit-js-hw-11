@@ -3,11 +3,13 @@
 @import "base/typography";
 @import "base/reset";
 
+@import "components/header";
+@import "components/search-form";
 @import "components/gallery";
 @import "components/photo-card";
 
 @import "layout/containter";
 
-* {
-  outline: 1px solid rgba(255, 99, 71, 0.25);
-}
+//* {
+//  outline: 1px solid rgba(255, 99, 71, 0.25);
+//}
