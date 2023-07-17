@@ -1,38 +1,48 @@
 const isHiddenClass = "is-hidden";
 
 export default class LoadMoreButton {
-  #refs;
+  #buttonRef;
 
   constructor({
     selector,
     isShown,
   }) {
-    this.#refs = document.querySelector(selector);
+    this.buttonRef = document.querySelector(selector);
+
+    console.log(this.buttonRef);
+
+    console.log();
 
     if (isShown) {
       this.show();
+    } else {
+      this.hide();
     }
   }
 
   enable() {
-    this.#refs.button.disabled = false;
-    this.#refs.button.textContent = "Load more";
+    this.#buttonRef.disabled = false;
+    this.#buttonRef.textContent = "Load more";
   }
 
   disable() {
-    this.#refs.button.disabled = true;
-    this.#refs.button.textContent = "Loading";
+    this.#buttonRef.disabled = true;
+    this.#buttonRef.textContent = "Loading";
   }
 
   hide() {
-    this.#refs.button.classList.add(isHiddenClass);
+    this.#buttonRef.classList.add(isHiddenClass);
   }
 
   show() {
-    this.#refs.button.classList.remove(isHiddenClass);
+    this.#buttonRef.classList.remove(isHiddenClass);
   }
 
-  get refs() {
-    return this.#refs;
+  get buttonRef() {
+    return this.#buttonRef;
+  }
+
+  set buttonRef(value) {
+    this.#buttonRef = value;
   }
 }
