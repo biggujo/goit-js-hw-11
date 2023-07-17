@@ -1,0 +1,23 @@
+.load-more {
+  display: block;
+  min-width: 120px;
+  height: 40px;
+  margin-inline: auto;
+
+  color: #ffffff;
+  border-radius: 7px;
+  // Color has been set from the given video example
+  background-color: #3f57b3;
+
+  cursor: pointer;
+  text-transform: uppercase;
+
+  & {
+    border: none;
+    outline: none;
+  }
+
+  &:focus {
+    outline: 3px solid #5981dc;
+  }
+}
