@@ -14,10 +14,6 @@ export class PageCounter {
     return this.currentPage >= this.finalPage;
   }
 
-  a() {
-
-  }
-
   get currentPage() {
     return this.#currentPage;
   }
