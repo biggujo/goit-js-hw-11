@@ -1,12 +1,15 @@
+$default-gap: 20px;
+
 .cat-gallery {
   display: flex;
   flex-wrap: wrap;
+  gap: $default-gap;
 
-  .cat-gallery > .card {
+  & > .card {
     width: 100%;
 
     @media screen and (width > 768px) {
-      width: calc((100% - 30px * 3) / 4);
+      width: calc((100% - $default-gap * 3) / 4);
     }
   }
 }
