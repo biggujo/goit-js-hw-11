@@ -18,12 +18,12 @@ export class PixabayApiService {
 
   constructor() {
     this.query = "";
-    this.currentPage = 1;
+    this.currentPage = 0;
   }
 
-  async fetchImagesByQuery(query) {
+  async fetchImagesByQuery() {
     const params = {
-      q: query,
+      q: this.query,
       page: this.currentPage,
       per_page: PixabayApiService.PAGE_STEP,
     };
@@ -41,8 +41,12 @@ export class PixabayApiService {
     this.currentPage += 1;
   }
 
-  resetPage() {
+  resetPageCount() {
     this.currentPage = 1;
+  }
+
+  hasExceededMaxPage() {
+    return this.currentPage > this.maxPage;
   }
 
   get query() {
