@@ -1,3 +1,5 @@
+import { refs } from "./refs";
+
 function createCardsMarkup(queryResultsArray) {
   return queryResultsArray.map(({
     webformatURL,
