@@ -35,7 +35,15 @@ function createCardsMarkup(queryResultsArray) {
 }
 
 function renderCardsMarkup(markup) {
-  refs.gallery.innerHTML = markup;
+  refs.gallery.insertAdjacentHTML("beforeend", markup);
 }
 
-export { createCardsMarkup, renderCardsMarkup };
+function clearCardsGallery() {
+  refs.gallery.innerHTML = "";
+}
+
+export default {
+  createCardsMarkup,
+  renderCardsMarkup,
+  clearCardsGallery,
+};
