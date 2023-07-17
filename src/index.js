@@ -17,10 +17,20 @@ async function handleFormSubmit(event) {
   const { searchQuery } = event.currentTarget.elements;
   const searchValue = searchQuery.value;
 
-  const queryResults = (await fetchImagesByQuery(searchValue)).hits;
+  try {
+    const queryResults = (await fetchImagesByQuery(searchValue));
 
-  const markup = createCardsMarkup(queryResults);
-  renderCardsMarkup(markup);
+    if (queryResults.total === 0) {
+      throw new Error(
+        "Sorry, there are no images matching your search query. Please try again.");
+    }
+
+    const markup = createCardsMarkup(queryResults.hits);
+    renderCardsMarkup(markup);
+  } catch (error) {
+    console.log(error.message);
+    // console.log("No results found");
+  }
 }
 
 function createCardsMarkup(queryResultsArray) {
