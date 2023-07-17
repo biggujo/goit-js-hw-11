@@ -4,6 +4,8 @@ import { refs } from "./js/refs";
 import { PixabayApiService } from "./js/pixabay-api-service";
 import CardService from "./js/card-service";
 
+let isFirstPage = true;
+
 const pixabayApiService = new PixabayApiService();
 
 refs.form.addEventListener("submit", handleFormSubmit);
@@ -15,15 +17,17 @@ async function handleFormSubmit(event) {
   CardService.clearCardsGallery();
   pixabayApiService.resetPageCount();
 
+  isFirstPage = true;
+
   pixabayApiService.query = event.currentTarget.elements.searchQuery.value;
-  await loadData({ isFirstPage: true });
+  await loadData();
 }
 
 async function handleLoadMore() {
-  await loadData({ isFirstPage: false });
+  await loadData();
 }
 
-async function loadData({ isFirstPage = false }) {
+async function loadData() {
   refs.loadMoreBtn.hide();
 
   try {
@@ -45,6 +49,7 @@ async function loadData({ isFirstPage = false }) {
     if (isFirstPage) {
       Notify.success(`Hooray! We found ${totalHits} images.`);
     }
+    isFirstPage = false;
 
     setMaxPage(totalHits);
 
