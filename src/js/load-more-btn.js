@@ -20,16 +20,6 @@ export default class LoadMoreButton {
     }
   }
 
-  enable() {
-    this.#buttonRef.disabled = false;
-    this.#buttonRef.textContent = "Load more";
-  }
-
-  disable() {
-    this.#buttonRef.disabled = true;
-    this.#buttonRef.textContent = "Loading";
-  }
-
   hide() {
     this.#buttonRef.classList.add(isHiddenClass);
   }
