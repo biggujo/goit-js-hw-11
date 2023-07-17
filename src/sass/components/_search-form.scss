@@ -1,0 +1,36 @@
+.search-form {
+  display: flex;
+  align-content: stretch;
+  width: 400px;
+  height: 40px;
+  margin-block: 15px;
+
+  border-radius: 10px;
+  overflow: hidden;
+
+  & > input {
+    padding-left: 10px;
+    width: 100%;
+
+    line-height: normal;
+  }
+
+  & > button {
+    width: 40px;
+
+    // Color has been set from the given video example
+    background-color: #f1f1f1;
+
+    cursor: pointer;
+  }
+
+  & > input,
+  & > button {
+    border: none;
+    outline: none;
+  }
+
+  &:focus-within {
+    outline: 3px solid #5981dc;
+  }
+}
