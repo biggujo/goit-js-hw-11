@@ -9,10 +9,6 @@ export default class LoadMoreButton {
   }) {
     this.buttonRef = document.querySelector(selector);
 
-    console.log(this.buttonRef);
-
-    console.log();
-
     if (isShown) {
       this.show();
     } else {
