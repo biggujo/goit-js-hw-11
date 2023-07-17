@@ -1,4 +1,4 @@
-const isHiddenClass = "is-hidden";
+const isInvisibleClass = "is-invisible";
 
 export default class LoadMoreButton {
   #buttonRef;
@@ -21,11 +21,11 @@ export default class LoadMoreButton {
   }
 
   hide() {
-    this.#buttonRef.classList.add(isHiddenClass);
+    this.#buttonRef.classList.add(isInvisibleClass);
   }
 
   show() {
-    this.#buttonRef.classList.remove(isHiddenClass);
+    this.#buttonRef.classList.remove(isInvisibleClass);
   }
 
   get buttonRef() {
